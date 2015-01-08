@@ -1,0 +1,2443 @@
+===========================================================================
+         ________    _________   _________     __     _________            
+        |        |\ |        |\ |        |\   |  |\  /         \\          
+        |    ____|| |    ____|| |    __  ||   |__|| |    ___    ||         
+        |   |\___\| |   |\___\| |   |\_| ||    \_\| |   //  \   ||         
+        |   ||      |   ||      |   || | ||    __   |  ||    |  ||         
+        |   ||__    |   ||__    |   ||_| ||   |  |\ |  ||    |  ||         
+        |       |\  |       |\  |         \\  |  || |  ||    |  ||         
+        |    ___||  |    ___||  |    ___   || |  || |  ||    |  ||         
+        |   |\__\|  |   |\__\|  |   |\__|  || |  || |  ||    |  ||         
+        |   ||      |   ||      |   ||  |  || |  || |  ||    |  ||         
+        |   ||      |   ||___   |   ||__|  || |  || |   \\__/   ||         
+        |   ||      |        |\ |          || |  || |           ||         
+        |___||      |________|| |__________|| |__||  \_________//          
+                                                                           
+      F I N I T E   E L E M E N T S   F O R   B I O M E C H A N I C S      
+                                                                           
+                 --- v e r s i o n - 1 . 8 . 0 . 5060 ---                 
+                                                                           
+                                                                           
+  Musculoskeletal Research Laboratory                                      
+  University of Utah                                                       
+  http://mrl.sci.utah.edu                                                  
+                                                                           
+  copyright (c) 2006-2013 - All rights reserved                            
+                                                                              
+ This is the NON-COMMERCIAL version of FEBio or the commercial license        
+ key file could not be found. If you have a key file make sure it is          
+ placed in the same directory as the executable. This version may only        
+ be used for non-commercial purposes as described in the license agreement.   
+ The functionality of this version may be limited compared to the commercial  
+ version. If you wish to obtain a valid commercial license file, please       
+ contact the developers.                                                      
+                                                                           
+===========================================================================
+
+
+
+
+ FILES USED
+===========================================================================
+	Input file : testGridWithNL.feb
+	Plot file  : testGridWithNL.xplt
+	Log file   : testGridWithNL.log
+
+
+ CONTROL DATA
+===========================================================================
+Module type ...................................... : 0
+	   eq. 0: solid mechanics
+	   eq. 1: solid-fluid mixture
+	   eq. 2: heat transfer
+	   eq. 3: solid-fluid-solute(s) mixture
+	Analysis type .................................. : 0
+	   eq. 0: quasi-static
+	   eq. 1: dynamic
+	   eq. 2: steady-state
+	Plane strain mode .............................. : no
+	Number of materials ............................ : 2
+	Number of nodes ................................ : 1922
+	Number of solid elements ....................... : 900
+	Number of shell elements ....................... : 0
+	Number of truss elements ....................... : 0
+	Number of timesteps ............................ : 10
+	Time step size ................................. : 0.1
+	Auto time stepper activated .................... : yes
+	  Optimal nr of iterations ..................... : 10
+	  Minimum allowable step size .................. : 0.01
+	  Maximum allowable step size .................. : 0.1
+	Number of loadcurves ........................... : 1
+	Number of displacement boundary conditions ..... : 62
+	Number of concentrated nodal forces ............ : 0
+	Max nr of stiffness reformations ............... : 15
+	per time steps
+	Max nr of Quasi-Newton iterations .............. : 10
+	between stiffness matrix reformations
+	Displacement convergence tolerance ............. : 0.001
+	Energy convergence tolerance ................... : 0.01
+	Residual convergence tolerance ................. : 0
+	Minimal residual value ......................... : 1e-020
+	Linesearch convergence tolerance ............... : 0.9
+	Minimum line search size ....................... : 0.01
+	Maximum number of line search iterations ....... : 5
+	Max condition number ........................... : 100000
+
+
+ OUTPUT DATA
+===========================================================================
+	plot level ................................ : major iterations
+	plotfile format ........................... : FEBIO
+		Nodal Variables:
+			displacement         (type = vec3f, format = NODE)
+		Domain Variables:
+			stress               (type = mat3fs, format = ITEM)
+
+
+ MATERIAL DATA
+===========================================================================
+  1 - Mooney-Rivlin (Material1)
+	density ........................................... : 1
+	k ................................................. : 10
+	laugon ............................................ : 0
+	atol .............................................. : 0.01
+	c1 ................................................ : 1
+	c2 ................................................ : 0
+---------------------------------------------------------------------------
+  2 - Mooney-Rivlin (Material2)
+	density ........................................... : 1
+	k ................................................. : 400
+	laugon ............................................ : 0
+	atol .............................................. : 0.01
+	c1 ................................................ : 3
+	c2 ................................................ : 2
+
+
+ LOADCURVE DATA
+===========================================================================
+  1
+         0         0
+         1         1
+
+
+ LINEAR SOLVER DATA
+===========================================================================
+	Solver type ............................... : Pardiso
+
+
+===== reforming stiffness matrix:
+	Nr of equations ........................... : 5456
+	Nr of nonzeroes in stiffness matrix ....... : 143232
+
+
+===== beginning time step 1 : 0.1 =====
+ 1
+ Nonlinear solution status: time= 0.1
+	stiffness updates             = 0
+	right hand side evaluations   = 2
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           4.893195e+004   2.559923e-001   0.000000e+000 
+	   energy             2.388629e+002   1.066025e-002   2.388629e+000 
+	   displacement       2.476837e+001   2.476837e+001   2.476837e-005 
+ 2
+ Nonlinear solution status: time= 0.1
+	stiffness updates             = 1
+	right hand side evaluations   = 3
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           4.893195e+004   1.810608e-003   0.000000e+000 
+	   energy             2.388629e+002   5.828282e-005   2.388629e+000 
+	   displacement       2.476837e+001   4.871706e-004   2.472948e-005 
+ 3
+ Nonlinear solution status: time= 0.1
+	stiffness updates             = 2
+	right hand side evaluations   = 4
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           4.893195e+004   4.431305e-004   0.000000e+000 
+	   energy             2.388629e+002   4.333354e-006   2.388629e+000 
+	   displacement       2.476837e+001   8.939234e-006   2.473244e-005 
+
+convergence summary
+    number of iterations   : 3
+    number of reformations : 1
+
+
+------- converged at time : 0.1
+
+
+Data Record #1
+===========================================================================
+Step = 1
+Time = 0.1
+Data = data
+File = dataFile.txt
+
+Data Record #2
+===========================================================================
+Step = 1
+Time = 0.1
+Data = data
+File = dataFile.txt
+
+Data Record #3
+===========================================================================
+Step = 1
+Time = 0.1
+Data = data
+File = dataFile.txt
+
+Data Record #4
+===========================================================================
+Step = 1
+Time = 0.1
+Data = data
+File = dataFile.txt
+
+Data Record #5
+===========================================================================
+Step = 1
+Time = 0.1
+Data = data
+File = dataFile.txt
+
+Data Record #6
+===========================================================================
+Step = 1
+Time = 0.1
+Data = data
+File = dataFile.txt
+
+Data Record #7
+===========================================================================
+Step = 1
+Time = 0.1
+Data = data
+File = dataFile.txt
+
+Data Record #8
+===========================================================================
+Step = 1
+Time = 0.1
+Data = data
+File = dataFile.txt
+
+Data Record #9
+===========================================================================
+Step = 1
+Time = 0.1
+Data = data
+File = dataFile.txt
+
+Data Record #10
+===========================================================================
+Step = 1
+Time = 0.1
+Data = data
+File = dataFile.txt
+
+Data Record #11
+===========================================================================
+Step = 1
+Time = 0.1
+Data = data
+File = dataFile.txt
+
+Data Record #12
+===========================================================================
+Step = 1
+Time = 0.1
+Data = data
+File = dataFile.txt
+
+Data Record #13
+===========================================================================
+Step = 1
+Time = 0.1
+Data = data
+File = dataFile.txt
+
+Data Record #14
+===========================================================================
+Step = 1
+Time = 0.1
+Data = data
+File = dataFile.txt
+
+Data Record #15
+===========================================================================
+Step = 1
+Time = 0.1
+Data = data
+File = dataFile.txt
+
+Data Record #16
+===========================================================================
+Step = 1
+Time = 0.1
+Data = data
+File = dataFile.txt
+
+Data Record #17
+===========================================================================
+Step = 1
+Time = 0.1
+Data = data
+File = dataFile.txt
+
+Data Record #18
+===========================================================================
+Step = 1
+Time = 0.1
+Data = data
+File = dataFile.txt
+
+Data Record #19
+===========================================================================
+Step = 1
+Time = 0.1
+Data = data
+File = dataFile.txt
+
+Data Record #20
+===========================================================================
+Step = 1
+Time = 0.1
+Data = data
+File = dataFile.txt
+
+Data Record #21
+===========================================================================
+Step = 1
+Time = 0.1
+Data = data
+File = dataFile.txt
+
+Data Record #22
+===========================================================================
+Step = 1
+Time = 0.1
+Data = data
+File = dataFile.txt
+
+Data Record #23
+===========================================================================
+Step = 1
+Time = 0.1
+Data = data
+File = dataFile.txt
+
+Data Record #24
+===========================================================================
+Step = 1
+Time = 0.1
+Data = data
+File = dataFile.txt
+
+Data Record #25
+===========================================================================
+Step = 1
+Time = 0.1
+Data = data
+File = dataFile.txt
+
+Data Record #26
+===========================================================================
+Step = 1
+Time = 0.1
+Data = data
+File = dataFile.txt
+
+Data Record #27
+===========================================================================
+Step = 1
+Time = 0.1
+Data = data
+File = dataFile.txt
+
+===== beginning time step 2 : 0.2 =====
+ 1
+ Nonlinear solution status: time= 0.2
+	stiffness updates             = 0
+	right hand side evaluations   = 2
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           4.725253e+004   2.366087e-001   0.000000e+000 
+	   energy             2.329503e+002   1.209768e-002   2.329503e+000 
+	   displacement       2.469864e+001   2.469864e+001   2.469864e-005 
+ 2
+ Nonlinear solution status: time= 0.2
+	stiffness updates             = 1
+	right hand side evaluations   = 3
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           4.725253e+004   8.567087e-004   0.000000e+000 
+	   energy             2.329503e+002   3.502453e-005   2.329503e+000 
+	   displacement       2.469864e+001   3.764882e-004   2.466496e-005 
+ 3
+ Nonlinear solution status: time= 0.2
+	stiffness updates             = 2
+	right hand side evaluations   = 4
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           4.725253e+004   1.958085e-004   0.000000e+000 
+	   energy             2.329503e+002   1.927168e-006   2.329503e+000 
+	   displacement       2.469864e+001   4.564823e-006   2.466692e-005 
+
+convergence summary
+    number of iterations   : 3
+    number of reformations : 1
+
+
+------- converged at time : 0.2
+
+
+Data Record #1
+===========================================================================
+Step = 2
+Time = 0.2
+Data = data
+File = dataFile.txt
+
+Data Record #2
+===========================================================================
+Step = 2
+Time = 0.2
+Data = data
+File = dataFile.txt
+
+Data Record #3
+===========================================================================
+Step = 2
+Time = 0.2
+Data = data
+File = dataFile.txt
+
+Data Record #4
+===========================================================================
+Step = 2
+Time = 0.2
+Data = data
+File = dataFile.txt
+
+Data Record #5
+===========================================================================
+Step = 2
+Time = 0.2
+Data = data
+File = dataFile.txt
+
+Data Record #6
+===========================================================================
+Step = 2
+Time = 0.2
+Data = data
+File = dataFile.txt
+
+Data Record #7
+===========================================================================
+Step = 2
+Time = 0.2
+Data = data
+File = dataFile.txt
+
+Data Record #8
+===========================================================================
+Step = 2
+Time = 0.2
+Data = data
+File = dataFile.txt
+
+Data Record #9
+===========================================================================
+Step = 2
+Time = 0.2
+Data = data
+File = dataFile.txt
+
+Data Record #10
+===========================================================================
+Step = 2
+Time = 0.2
+Data = data
+File = dataFile.txt
+
+Data Record #11
+===========================================================================
+Step = 2
+Time = 0.2
+Data = data
+File = dataFile.txt
+
+Data Record #12
+===========================================================================
+Step = 2
+Time = 0.2
+Data = data
+File = dataFile.txt
+
+Data Record #13
+===========================================================================
+Step = 2
+Time = 0.2
+Data = data
+File = dataFile.txt
+
+Data Record #14
+===========================================================================
+Step = 2
+Time = 0.2
+Data = data
+File = dataFile.txt
+
+Data Record #15
+===========================================================================
+Step = 2
+Time = 0.2
+Data = data
+File = dataFile.txt
+
+Data Record #16
+===========================================================================
+Step = 2
+Time = 0.2
+Data = data
+File = dataFile.txt
+
+Data Record #17
+===========================================================================
+Step = 2
+Time = 0.2
+Data = data
+File = dataFile.txt
+
+Data Record #18
+===========================================================================
+Step = 2
+Time = 0.2
+Data = data
+File = dataFile.txt
+
+Data Record #19
+===========================================================================
+Step = 2
+Time = 0.2
+Data = data
+File = dataFile.txt
+
+Data Record #20
+===========================================================================
+Step = 2
+Time = 0.2
+Data = data
+File = dataFile.txt
+
+Data Record #21
+===========================================================================
+Step = 2
+Time = 0.2
+Data = data
+File = dataFile.txt
+
+Data Record #22
+===========================================================================
+Step = 2
+Time = 0.2
+Data = data
+File = dataFile.txt
+
+Data Record #23
+===========================================================================
+Step = 2
+Time = 0.2
+Data = data
+File = dataFile.txt
+
+Data Record #24
+===========================================================================
+Step = 2
+Time = 0.2
+Data = data
+File = dataFile.txt
+
+Data Record #25
+===========================================================================
+Step = 2
+Time = 0.2
+Data = data
+File = dataFile.txt
+
+Data Record #26
+===========================================================================
+Step = 2
+Time = 0.2
+Data = data
+File = dataFile.txt
+
+Data Record #27
+===========================================================================
+Step = 2
+Time = 0.2
+Data = data
+File = dataFile.txt
+
+===== beginning time step 3 : 0.3 =====
+ 1
+ Nonlinear solution status: time= 0.3
+	stiffness updates             = 0
+	right hand side evaluations   = 2
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           4.566863e+004   2.244351e-001   0.000000e+000 
+	   energy             2.272696e+002   1.316840e-002   2.272696e+000 
+	   displacement       2.463633e+001   2.463633e+001   2.463633e-005 
+ 2
+ Nonlinear solution status: time= 0.3
+	stiffness updates             = 1
+	right hand side evaluations   = 3
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           4.566863e+004   5.166593e-004   0.000000e+000 
+	   energy             2.272696e+002   2.543041e-005   2.272696e+000 
+	   displacement       2.463633e+001   3.066034e-004   2.460660e-005 
+ 3
+ Nonlinear solution status: time= 0.3
+	stiffness updates             = 2
+	right hand side evaluations   = 4
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           4.566863e+004   9.658534e-005   0.000000e+000 
+	   energy             2.272696e+002   1.009709e-006   2.272696e+000 
+	   displacement       2.463633e+001   2.973329e-006   2.460790e-005 
+
+convergence summary
+    number of iterations   : 3
+    number of reformations : 1
+
+
+------- converged at time : 0.3
+
+
+Data Record #1
+===========================================================================
+Step = 3
+Time = 0.3
+Data = data
+File = dataFile.txt
+
+Data Record #2
+===========================================================================
+Step = 3
+Time = 0.3
+Data = data
+File = dataFile.txt
+
+Data Record #3
+===========================================================================
+Step = 3
+Time = 0.3
+Data = data
+File = dataFile.txt
+
+Data Record #4
+===========================================================================
+Step = 3
+Time = 0.3
+Data = data
+File = dataFile.txt
+
+Data Record #5
+===========================================================================
+Step = 3
+Time = 0.3
+Data = data
+File = dataFile.txt
+
+Data Record #6
+===========================================================================
+Step = 3
+Time = 0.3
+Data = data
+File = dataFile.txt
+
+Data Record #7
+===========================================================================
+Step = 3
+Time = 0.3
+Data = data
+File = dataFile.txt
+
+Data Record #8
+===========================================================================
+Step = 3
+Time = 0.3
+Data = data
+File = dataFile.txt
+
+Data Record #9
+===========================================================================
+Step = 3
+Time = 0.3
+Data = data
+File = dataFile.txt
+
+Data Record #10
+===========================================================================
+Step = 3
+Time = 0.3
+Data = data
+File = dataFile.txt
+
+Data Record #11
+===========================================================================
+Step = 3
+Time = 0.3
+Data = data
+File = dataFile.txt
+
+Data Record #12
+===========================================================================
+Step = 3
+Time = 0.3
+Data = data
+File = dataFile.txt
+
+Data Record #13
+===========================================================================
+Step = 3
+Time = 0.3
+Data = data
+File = dataFile.txt
+
+Data Record #14
+===========================================================================
+Step = 3
+Time = 0.3
+Data = data
+File = dataFile.txt
+
+Data Record #15
+===========================================================================
+Step = 3
+Time = 0.3
+Data = data
+File = dataFile.txt
+
+Data Record #16
+===========================================================================
+Step = 3
+Time = 0.3
+Data = data
+File = dataFile.txt
+
+Data Record #17
+===========================================================================
+Step = 3
+Time = 0.3
+Data = data
+File = dataFile.txt
+
+Data Record #18
+===========================================================================
+Step = 3
+Time = 0.3
+Data = data
+File = dataFile.txt
+
+Data Record #19
+===========================================================================
+Step = 3
+Time = 0.3
+Data = data
+File = dataFile.txt
+
+Data Record #20
+===========================================================================
+Step = 3
+Time = 0.3
+Data = data
+File = dataFile.txt
+
+Data Record #21
+===========================================================================
+Step = 3
+Time = 0.3
+Data = data
+File = dataFile.txt
+
+Data Record #22
+===========================================================================
+Step = 3
+Time = 0.3
+Data = data
+File = dataFile.txt
+
+Data Record #23
+===========================================================================
+Step = 3
+Time = 0.3
+Data = data
+File = dataFile.txt
+
+Data Record #24
+===========================================================================
+Step = 3
+Time = 0.3
+Data = data
+File = dataFile.txt
+
+Data Record #25
+===========================================================================
+Step = 3
+Time = 0.3
+Data = data
+File = dataFile.txt
+
+Data Record #26
+===========================================================================
+Step = 3
+Time = 0.3
+Data = data
+File = dataFile.txt
+
+Data Record #27
+===========================================================================
+Step = 3
+Time = 0.3
+Data = data
+File = dataFile.txt
+
+===== beginning time step 4 : 0.4 =====
+ 1
+ Nonlinear solution status: time= 0.4
+	stiffness updates             = 0
+	right hand side evaluations   = 2
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           4.417484e+004   2.150959e-001   0.000000e+000 
+	   energy             2.218164e+002   1.393328e-002   2.218164e+000 
+	   displacement       2.458050e+001   2.458050e+001   2.458050e-005 
+ 2
+ Nonlinear solution status: time= 0.4
+	stiffness updates             = 1
+	right hand side evaluations   = 3
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           4.417484e+004   3.195711e-004   0.000000e+000 
+	   energy             2.218164e+002   1.958862e-005   2.218164e+000 
+	   displacement       2.458050e+001   2.536803e-004   2.455403e-005 
+ 3
+ Nonlinear solution status: time= 0.4
+	stiffness updates             = 2
+	right hand side evaluations   = 4
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           4.417484e+004   4.635516e-005   0.000000e+000 
+	   energy             2.218164e+002   5.092125e-007   2.218164e+000 
+	   displacement       2.458050e+001   2.188779e-006   2.455487e-005 
+
+convergence summary
+    number of iterations   : 3
+    number of reformations : 1
+
+
+------- converged at time : 0.4
+
+
+Data Record #1
+===========================================================================
+Step = 4
+Time = 0.4
+Data = data
+File = dataFile.txt
+
+Data Record #2
+===========================================================================
+Step = 4
+Time = 0.4
+Data = data
+File = dataFile.txt
+
+Data Record #3
+===========================================================================
+Step = 4
+Time = 0.4
+Data = data
+File = dataFile.txt
+
+Data Record #4
+===========================================================================
+Step = 4
+Time = 0.4
+Data = data
+File = dataFile.txt
+
+Data Record #5
+===========================================================================
+Step = 4
+Time = 0.4
+Data = data
+File = dataFile.txt
+
+Data Record #6
+===========================================================================
+Step = 4
+Time = 0.4
+Data = data
+File = dataFile.txt
+
+Data Record #7
+===========================================================================
+Step = 4
+Time = 0.4
+Data = data
+File = dataFile.txt
+
+Data Record #8
+===========================================================================
+Step = 4
+Time = 0.4
+Data = data
+File = dataFile.txt
+
+Data Record #9
+===========================================================================
+Step = 4
+Time = 0.4
+Data = data
+File = dataFile.txt
+
+Data Record #10
+===========================================================================
+Step = 4
+Time = 0.4
+Data = data
+File = dataFile.txt
+
+Data Record #11
+===========================================================================
+Step = 4
+Time = 0.4
+Data = data
+File = dataFile.txt
+
+Data Record #12
+===========================================================================
+Step = 4
+Time = 0.4
+Data = data
+File = dataFile.txt
+
+Data Record #13
+===========================================================================
+Step = 4
+Time = 0.4
+Data = data
+File = dataFile.txt
+
+Data Record #14
+===========================================================================
+Step = 4
+Time = 0.4
+Data = data
+File = dataFile.txt
+
+Data Record #15
+===========================================================================
+Step = 4
+Time = 0.4
+Data = data
+File = dataFile.txt
+
+Data Record #16
+===========================================================================
+Step = 4
+Time = 0.4
+Data = data
+File = dataFile.txt
+
+Data Record #17
+===========================================================================
+Step = 4
+Time = 0.4
+Data = data
+File = dataFile.txt
+
+Data Record #18
+===========================================================================
+Step = 4
+Time = 0.4
+Data = data
+File = dataFile.txt
+
+Data Record #19
+===========================================================================
+Step = 4
+Time = 0.4
+Data = data
+File = dataFile.txt
+
+Data Record #20
+===========================================================================
+Step = 4
+Time = 0.4
+Data = data
+File = dataFile.txt
+
+Data Record #21
+===========================================================================
+Step = 4
+Time = 0.4
+Data = data
+File = dataFile.txt
+
+Data Record #22
+===========================================================================
+Step = 4
+Time = 0.4
+Data = data
+File = dataFile.txt
+
+Data Record #23
+===========================================================================
+Step = 4
+Time = 0.4
+Data = data
+File = dataFile.txt
+
+Data Record #24
+===========================================================================
+Step = 4
+Time = 0.4
+Data = data
+File = dataFile.txt
+
+Data Record #25
+===========================================================================
+Step = 4
+Time = 0.4
+Data = data
+File = dataFile.txt
+
+Data Record #26
+===========================================================================
+Step = 4
+Time = 0.4
+Data = data
+File = dataFile.txt
+
+Data Record #27
+===========================================================================
+Step = 4
+Time = 0.4
+Data = data
+File = dataFile.txt
+
+===== beginning time step 5 : 0.5 =====
+ 1
+ Nonlinear solution status: time= 0.5
+	stiffness updates             = 0
+	right hand side evaluations   = 2
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           4.276558e+004   2.074509e-001   0.000000e+000 
+	   energy             2.165834e+002   1.445208e-002   2.165834e+000 
+	   displacement       2.453015e+001   2.453015e+001   2.453015e-005 
+ 2
+ Nonlinear solution status: time= 0.5
+	stiffness updates             = 1
+	right hand side evaluations   = 3
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           4.276558e+004   2.068464e-004   0.000000e+000 
+	   energy             2.165834e+002   1.601480e-005   2.165834e+000 
+	   displacement       2.453015e+001   2.130239e-004   2.450641e-005 
+ 3
+ Nonlinear solution status: time= 0.5
+	stiffness updates             = 2
+	right hand side evaluations   = 4
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           4.276558e+004   2.220744e-005   0.000000e+000 
+	   energy             2.165834e+002   2.516633e-007   2.165834e+000 
+	   displacement       2.453015e+001   1.775714e-006   2.450691e-005 
+
+convergence summary
+    number of iterations   : 3
+    number of reformations : 1
+
+
+------- converged at time : 0.5
+
+
+Data Record #1
+===========================================================================
+Step = 5
+Time = 0.5
+Data = data
+File = dataFile.txt
+
+Data Record #2
+===========================================================================
+Step = 5
+Time = 0.5
+Data = data
+File = dataFile.txt
+
+Data Record #3
+===========================================================================
+Step = 5
+Time = 0.5
+Data = data
+File = dataFile.txt
+
+Data Record #4
+===========================================================================
+Step = 5
+Time = 0.5
+Data = data
+File = dataFile.txt
+
+Data Record #5
+===========================================================================
+Step = 5
+Time = 0.5
+Data = data
+File = dataFile.txt
+
+Data Record #6
+===========================================================================
+Step = 5
+Time = 0.5
+Data = data
+File = dataFile.txt
+
+Data Record #7
+===========================================================================
+Step = 5
+Time = 0.5
+Data = data
+File = dataFile.txt
+
+Data Record #8
+===========================================================================
+Step = 5
+Time = 0.5
+Data = data
+File = dataFile.txt
+
+Data Record #9
+===========================================================================
+Step = 5
+Time = 0.5
+Data = data
+File = dataFile.txt
+
+Data Record #10
+===========================================================================
+Step = 5
+Time = 0.5
+Data = data
+File = dataFile.txt
+
+Data Record #11
+===========================================================================
+Step = 5
+Time = 0.5
+Data = data
+File = dataFile.txt
+
+Data Record #12
+===========================================================================
+Step = 5
+Time = 0.5
+Data = data
+File = dataFile.txt
+
+Data Record #13
+===========================================================================
+Step = 5
+Time = 0.5
+Data = data
+File = dataFile.txt
+
+Data Record #14
+===========================================================================
+Step = 5
+Time = 0.5
+Data = data
+File = dataFile.txt
+
+Data Record #15
+===========================================================================
+Step = 5
+Time = 0.5
+Data = data
+File = dataFile.txt
+
+Data Record #16
+===========================================================================
+Step = 5
+Time = 0.5
+Data = data
+File = dataFile.txt
+
+Data Record #17
+===========================================================================
+Step = 5
+Time = 0.5
+Data = data
+File = dataFile.txt
+
+Data Record #18
+===========================================================================
+Step = 5
+Time = 0.5
+Data = data
+File = dataFile.txt
+
+Data Record #19
+===========================================================================
+Step = 5
+Time = 0.5
+Data = data
+File = dataFile.txt
+
+Data Record #20
+===========================================================================
+Step = 5
+Time = 0.5
+Data = data
+File = dataFile.txt
+
+Data Record #21
+===========================================================================
+Step = 5
+Time = 0.5
+Data = data
+File = dataFile.txt
+
+Data Record #22
+===========================================================================
+Step = 5
+Time = 0.5
+Data = data
+File = dataFile.txt
+
+Data Record #23
+===========================================================================
+Step = 5
+Time = 0.5
+Data = data
+File = dataFile.txt
+
+Data Record #24
+===========================================================================
+Step = 5
+Time = 0.5
+Data = data
+File = dataFile.txt
+
+Data Record #25
+===========================================================================
+Step = 5
+Time = 0.5
+Data = data
+File = dataFile.txt
+
+Data Record #26
+===========================================================================
+Step = 5
+Time = 0.5
+Data = data
+File = dataFile.txt
+
+Data Record #27
+===========================================================================
+Step = 5
+Time = 0.5
+Data = data
+File = dataFile.txt
+
+===== beginning time step 6 : 0.6 =====
+ 1
+ Nonlinear solution status: time= 0.6
+	stiffness updates             = 0
+	right hand side evaluations   = 2
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           4.143538e+004   2.007626e-001   0.000000e+000 
+	   energy             2.115628e+002   1.477312e-002   2.115628e+000 
+	   displacement       2.448449e+001   2.448449e+001   2.448449e-005 
+ 2
+ Nonlinear solution status: time= 0.6
+	stiffness updates             = 1
+	right hand side evaluations   = 3
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           4.143538e+004   1.411110e-004   0.000000e+000 
+	   energy             2.115628e+002   1.373749e-005   2.115628e+000 
+	   displacement       2.448449e+001   1.811758e-004   2.446305e-005 
+ 3
+ Nonlinear solution status: time= 0.6
+	stiffness updates             = 2
+	right hand side evaluations   = 4
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           4.143538e+004   1.075478e-005   0.000000e+000 
+	   energy             2.115628e+002   1.213515e-007   2.115628e+000 
+	   displacement       2.448449e+001   1.520690e-006   2.446331e-005 
+
+convergence summary
+    number of iterations   : 3
+    number of reformations : 1
+
+
+------- converged at time : 0.6
+
+
+Data Record #1
+===========================================================================
+Step = 6
+Time = 0.6
+Data = data
+File = dataFile.txt
+
+Data Record #2
+===========================================================================
+Step = 6
+Time = 0.6
+Data = data
+File = dataFile.txt
+
+Data Record #3
+===========================================================================
+Step = 6
+Time = 0.6
+Data = data
+File = dataFile.txt
+
+Data Record #4
+===========================================================================
+Step = 6
+Time = 0.6
+Data = data
+File = dataFile.txt
+
+Data Record #5
+===========================================================================
+Step = 6
+Time = 0.6
+Data = data
+File = dataFile.txt
+
+Data Record #6
+===========================================================================
+Step = 6
+Time = 0.6
+Data = data
+File = dataFile.txt
+
+Data Record #7
+===========================================================================
+Step = 6
+Time = 0.6
+Data = data
+File = dataFile.txt
+
+Data Record #8
+===========================================================================
+Step = 6
+Time = 0.6
+Data = data
+File = dataFile.txt
+
+Data Record #9
+===========================================================================
+Step = 6
+Time = 0.6
+Data = data
+File = dataFile.txt
+
+Data Record #10
+===========================================================================
+Step = 6
+Time = 0.6
+Data = data
+File = dataFile.txt
+
+Data Record #11
+===========================================================================
+Step = 6
+Time = 0.6
+Data = data
+File = dataFile.txt
+
+Data Record #12
+===========================================================================
+Step = 6
+Time = 0.6
+Data = data
+File = dataFile.txt
+
+Data Record #13
+===========================================================================
+Step = 6
+Time = 0.6
+Data = data
+File = dataFile.txt
+
+Data Record #14
+===========================================================================
+Step = 6
+Time = 0.6
+Data = data
+File = dataFile.txt
+
+Data Record #15
+===========================================================================
+Step = 6
+Time = 0.6
+Data = data
+File = dataFile.txt
+
+Data Record #16
+===========================================================================
+Step = 6
+Time = 0.6
+Data = data
+File = dataFile.txt
+
+Data Record #17
+===========================================================================
+Step = 6
+Time = 0.6
+Data = data
+File = dataFile.txt
+
+Data Record #18
+===========================================================================
+Step = 6
+Time = 0.6
+Data = data
+File = dataFile.txt
+
+Data Record #19
+===========================================================================
+Step = 6
+Time = 0.6
+Data = data
+File = dataFile.txt
+
+Data Record #20
+===========================================================================
+Step = 6
+Time = 0.6
+Data = data
+File = dataFile.txt
+
+Data Record #21
+===========================================================================
+Step = 6
+Time = 0.6
+Data = data
+File = dataFile.txt
+
+Data Record #22
+===========================================================================
+Step = 6
+Time = 0.6
+Data = data
+File = dataFile.txt
+
+Data Record #23
+===========================================================================
+Step = 6
+Time = 0.6
+Data = data
+File = dataFile.txt
+
+Data Record #24
+===========================================================================
+Step = 6
+Time = 0.6
+Data = data
+File = dataFile.txt
+
+Data Record #25
+===========================================================================
+Step = 6
+Time = 0.6
+Data = data
+File = dataFile.txt
+
+Data Record #26
+===========================================================================
+Step = 6
+Time = 0.6
+Data = data
+File = dataFile.txt
+
+Data Record #27
+===========================================================================
+Step = 6
+Time = 0.6
+Data = data
+File = dataFile.txt
+
+===== beginning time step 7 : 0.7 =====
+ 1
+ Nonlinear solution status: time= 0.7
+	stiffness updates             = 0
+	right hand side evaluations   = 2
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           4.017896e+004   1.946104e-001   0.000000e+000 
+	   energy             2.067460e+002   1.493623e-002   2.067460e+000 
+	   displacement       2.444285e+001   2.444285e+001   2.444285e-005 
+ 2
+ Nonlinear solution status: time= 0.7
+	stiffness updates             = 1
+	right hand side evaluations   = 3
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           4.017896e+004   1.019970e-004   0.000000e+000 
+	   energy             2.067460e+002   1.220948e-005   2.067460e+000 
+	   displacement       2.444285e+001   1.558033e-004   2.442338e-005 
+ 3
+ Nonlinear solution status: time= 0.7
+	stiffness updates             = 2
+	right hand side evaluations   = 4
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           4.017896e+004   5.352054e-006   0.000000e+000 
+	   energy             2.067460e+002   5.635312e-008   2.067460e+000 
+	   displacement       2.444285e+001   1.332394e-006   2.442346e-005 
+
+convergence summary
+    number of iterations   : 3
+    number of reformations : 1
+
+
+------- converged at time : 0.7
+
+
+Data Record #1
+===========================================================================
+Step = 7
+Time = 0.7
+Data = data
+File = dataFile.txt
+
+Data Record #2
+===========================================================================
+Step = 7
+Time = 0.7
+Data = data
+File = dataFile.txt
+
+Data Record #3
+===========================================================================
+Step = 7
+Time = 0.7
+Data = data
+File = dataFile.txt
+
+Data Record #4
+===========================================================================
+Step = 7
+Time = 0.7
+Data = data
+File = dataFile.txt
+
+Data Record #5
+===========================================================================
+Step = 7
+Time = 0.7
+Data = data
+File = dataFile.txt
+
+Data Record #6
+===========================================================================
+Step = 7
+Time = 0.7
+Data = data
+File = dataFile.txt
+
+Data Record #7
+===========================================================================
+Step = 7
+Time = 0.7
+Data = data
+File = dataFile.txt
+
+Data Record #8
+===========================================================================
+Step = 7
+Time = 0.7
+Data = data
+File = dataFile.txt
+
+Data Record #9
+===========================================================================
+Step = 7
+Time = 0.7
+Data = data
+File = dataFile.txt
+
+Data Record #10
+===========================================================================
+Step = 7
+Time = 0.7
+Data = data
+File = dataFile.txt
+
+Data Record #11
+===========================================================================
+Step = 7
+Time = 0.7
+Data = data
+File = dataFile.txt
+
+Data Record #12
+===========================================================================
+Step = 7
+Time = 0.7
+Data = data
+File = dataFile.txt
+
+Data Record #13
+===========================================================================
+Step = 7
+Time = 0.7
+Data = data
+File = dataFile.txt
+
+Data Record #14
+===========================================================================
+Step = 7
+Time = 0.7
+Data = data
+File = dataFile.txt
+
+Data Record #15
+===========================================================================
+Step = 7
+Time = 0.7
+Data = data
+File = dataFile.txt
+
+Data Record #16
+===========================================================================
+Step = 7
+Time = 0.7
+Data = data
+File = dataFile.txt
+
+Data Record #17
+===========================================================================
+Step = 7
+Time = 0.7
+Data = data
+File = dataFile.txt
+
+Data Record #18
+===========================================================================
+Step = 7
+Time = 0.7
+Data = data
+File = dataFile.txt
+
+Data Record #19
+===========================================================================
+Step = 7
+Time = 0.7
+Data = data
+File = dataFile.txt
+
+Data Record #20
+===========================================================================
+Step = 7
+Time = 0.7
+Data = data
+File = dataFile.txt
+
+Data Record #21
+===========================================================================
+Step = 7
+Time = 0.7
+Data = data
+File = dataFile.txt
+
+Data Record #22
+===========================================================================
+Step = 7
+Time = 0.7
+Data = data
+File = dataFile.txt
+
+Data Record #23
+===========================================================================
+Step = 7
+Time = 0.7
+Data = data
+File = dataFile.txt
+
+Data Record #24
+===========================================================================
+Step = 7
+Time = 0.7
+Data = data
+File = dataFile.txt
+
+Data Record #25
+===========================================================================
+Step = 7
+Time = 0.7
+Data = data
+File = dataFile.txt
+
+Data Record #26
+===========================================================================
+Step = 7
+Time = 0.7
+Data = data
+File = dataFile.txt
+
+Data Record #27
+===========================================================================
+Step = 7
+Time = 0.7
+Data = data
+File = dataFile.txt
+
+===== beginning time step 8 : 0.8 =====
+ 1
+ Nonlinear solution status: time= 0.8
+	stiffness updates             = 0
+	right hand side evaluations   = 2
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           3.899132e+004   1.887588e-001   0.000000e+000 
+	   energy             2.021239e+002   1.497395e-002   2.021239e+000 
+	   displacement       2.440471e+001   2.440471e+001   2.440471e-005 
+ 2
+ Nonlinear solution status: time= 0.8
+	stiffness updates             = 1
+	right hand side evaluations   = 3
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           3.899132e+004   7.813418e-005   0.000000e+000 
+	   energy             2.021239e+002   1.111748e-005   2.021239e+000 
+	   displacement       2.440471e+001   1.352815e-004   2.438693e-005 
+ 3
+ Nonlinear solution status: time= 0.8
+	stiffness updates             = 2
+	right hand side evaluations   = 4
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           3.899132e+004   2.792614e-006   0.000000e+000 
+	   energy             2.021239e+002   2.436455e-008   2.021239e+000 
+	   displacement       2.440471e+001   1.174357e-006   2.438689e-005 
+
+convergence summary
+    number of iterations   : 3
+    number of reformations : 1
+
+
+------- converged at time : 0.8
+
+
+Data Record #1
+===========================================================================
+Step = 8
+Time = 0.8
+Data = data
+File = dataFile.txt
+
+Data Record #2
+===========================================================================
+Step = 8
+Time = 0.8
+Data = data
+File = dataFile.txt
+
+Data Record #3
+===========================================================================
+Step = 8
+Time = 0.8
+Data = data
+File = dataFile.txt
+
+Data Record #4
+===========================================================================
+Step = 8
+Time = 0.8
+Data = data
+File = dataFile.txt
+
+Data Record #5
+===========================================================================
+Step = 8
+Time = 0.8
+Data = data
+File = dataFile.txt
+
+Data Record #6
+===========================================================================
+Step = 8
+Time = 0.8
+Data = data
+File = dataFile.txt
+
+Data Record #7
+===========================================================================
+Step = 8
+Time = 0.8
+Data = data
+File = dataFile.txt
+
+Data Record #8
+===========================================================================
+Step = 8
+Time = 0.8
+Data = data
+File = dataFile.txt
+
+Data Record #9
+===========================================================================
+Step = 8
+Time = 0.8
+Data = data
+File = dataFile.txt
+
+Data Record #10
+===========================================================================
+Step = 8
+Time = 0.8
+Data = data
+File = dataFile.txt
+
+Data Record #11
+===========================================================================
+Step = 8
+Time = 0.8
+Data = data
+File = dataFile.txt
+
+Data Record #12
+===========================================================================
+Step = 8
+Time = 0.8
+Data = data
+File = dataFile.txt
+
+Data Record #13
+===========================================================================
+Step = 8
+Time = 0.8
+Data = data
+File = dataFile.txt
+
+Data Record #14
+===========================================================================
+Step = 8
+Time = 0.8
+Data = data
+File = dataFile.txt
+
+Data Record #15
+===========================================================================
+Step = 8
+Time = 0.8
+Data = data
+File = dataFile.txt
+
+Data Record #16
+===========================================================================
+Step = 8
+Time = 0.8
+Data = data
+File = dataFile.txt
+
+Data Record #17
+===========================================================================
+Step = 8
+Time = 0.8
+Data = data
+File = dataFile.txt
+
+Data Record #18
+===========================================================================
+Step = 8
+Time = 0.8
+Data = data
+File = dataFile.txt
+
+Data Record #19
+===========================================================================
+Step = 8
+Time = 0.8
+Data = data
+File = dataFile.txt
+
+Data Record #20
+===========================================================================
+Step = 8
+Time = 0.8
+Data = data
+File = dataFile.txt
+
+Data Record #21
+===========================================================================
+Step = 8
+Time = 0.8
+Data = data
+File = dataFile.txt
+
+Data Record #22
+===========================================================================
+Step = 8
+Time = 0.8
+Data = data
+File = dataFile.txt
+
+Data Record #23
+===========================================================================
+Step = 8
+Time = 0.8
+Data = data
+File = dataFile.txt
+
+Data Record #24
+===========================================================================
+Step = 8
+Time = 0.8
+Data = data
+File = dataFile.txt
+
+Data Record #25
+===========================================================================
+Step = 8
+Time = 0.8
+Data = data
+File = dataFile.txt
+
+Data Record #26
+===========================================================================
+Step = 8
+Time = 0.8
+Data = data
+File = dataFile.txt
+
+Data Record #27
+===========================================================================
+Step = 8
+Time = 0.8
+Data = data
+File = dataFile.txt
+
+===== beginning time step 9 : 0.9 =====
+ 1
+ Nonlinear solution status: time= 0.9
+	stiffness updates             = 0
+	right hand side evaluations   = 2
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           3.786773e+004   1.830821e-001   0.000000e+000 
+	   energy             1.976878e+002   1.491273e-002   1.976878e+000 
+	   displacement       2.436963e+001   2.436963e+001   2.436963e-005 
+ 2
+ Nonlinear solution status: time= 0.9
+	stiffness updates             = 1
+	right hand side evaluations   = 3
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           3.786773e+004   6.311238e-005   0.000000e+000 
+	   energy             1.976878e+002   1.028196e-005   1.976878e+000 
+	   displacement       2.436963e+001   1.184557e-004   2.435332e-005 
+ 3
+ Nonlinear solution status: time= 0.9
+	stiffness updates             = 2
+	right hand side evaluations   = 4
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           3.786773e+004   1.561501e-006   0.000000e+000 
+	   energy             1.976878e+002   8.890077e-009   1.976878e+000 
+	   displacement       2.436963e+001   1.033528e-006   2.435318e-005 
+
+convergence summary
+    number of iterations   : 3
+    number of reformations : 1
+
+
+------- converged at time : 0.9
+
+
+Data Record #1
+===========================================================================
+Step = 9
+Time = 0.9
+Data = data
+File = dataFile.txt
+
+Data Record #2
+===========================================================================
+Step = 9
+Time = 0.9
+Data = data
+File = dataFile.txt
+
+Data Record #3
+===========================================================================
+Step = 9
+Time = 0.9
+Data = data
+File = dataFile.txt
+
+Data Record #4
+===========================================================================
+Step = 9
+Time = 0.9
+Data = data
+File = dataFile.txt
+
+Data Record #5
+===========================================================================
+Step = 9
+Time = 0.9
+Data = data
+File = dataFile.txt
+
+Data Record #6
+===========================================================================
+Step = 9
+Time = 0.9
+Data = data
+File = dataFile.txt
+
+Data Record #7
+===========================================================================
+Step = 9
+Time = 0.9
+Data = data
+File = dataFile.txt
+
+Data Record #8
+===========================================================================
+Step = 9
+Time = 0.9
+Data = data
+File = dataFile.txt
+
+Data Record #9
+===========================================================================
+Step = 9
+Time = 0.9
+Data = data
+File = dataFile.txt
+
+Data Record #10
+===========================================================================
+Step = 9
+Time = 0.9
+Data = data
+File = dataFile.txt
+
+Data Record #11
+===========================================================================
+Step = 9
+Time = 0.9
+Data = data
+File = dataFile.txt
+
+Data Record #12
+===========================================================================
+Step = 9
+Time = 0.9
+Data = data
+File = dataFile.txt
+
+Data Record #13
+===========================================================================
+Step = 9
+Time = 0.9
+Data = data
+File = dataFile.txt
+
+Data Record #14
+===========================================================================
+Step = 9
+Time = 0.9
+Data = data
+File = dataFile.txt
+
+Data Record #15
+===========================================================================
+Step = 9
+Time = 0.9
+Data = data
+File = dataFile.txt
+
+Data Record #16
+===========================================================================
+Step = 9
+Time = 0.9
+Data = data
+File = dataFile.txt
+
+Data Record #17
+===========================================================================
+Step = 9
+Time = 0.9
+Data = data
+File = dataFile.txt
+
+Data Record #18
+===========================================================================
+Step = 9
+Time = 0.9
+Data = data
+File = dataFile.txt
+
+Data Record #19
+===========================================================================
+Step = 9
+Time = 0.9
+Data = data
+File = dataFile.txt
+
+Data Record #20
+===========================================================================
+Step = 9
+Time = 0.9
+Data = data
+File = dataFile.txt
+
+Data Record #21
+===========================================================================
+Step = 9
+Time = 0.9
+Data = data
+File = dataFile.txt
+
+Data Record #22
+===========================================================================
+Step = 9
+Time = 0.9
+Data = data
+File = dataFile.txt
+
+Data Record #23
+===========================================================================
+Step = 9
+Time = 0.9
+Data = data
+File = dataFile.txt
+
+Data Record #24
+===========================================================================
+Step = 9
+Time = 0.9
+Data = data
+File = dataFile.txt
+
+Data Record #25
+===========================================================================
+Step = 9
+Time = 0.9
+Data = data
+File = dataFile.txt
+
+Data Record #26
+===========================================================================
+Step = 9
+Time = 0.9
+Data = data
+File = dataFile.txt
+
+Data Record #27
+===========================================================================
+Step = 9
+Time = 0.9
+Data = data
+File = dataFile.txt
+
+===== beginning time step 10 : 1 =====
+ 1
+ Nonlinear solution status: time= 1
+	stiffness updates             = 0
+	right hand side evaluations   = 2
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           3.680382e+004   1.775189e-001   0.000000e+000 
+	   energy             1.934288e+002   1.477402e-002   1.934288e+000 
+	   displacement       2.433722e+001   2.433722e+001   2.433722e-005 
+ 2
+ Nonlinear solution status: time= 1
+	stiffness updates             = 1
+	right hand side evaluations   = 3
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           3.680382e+004   5.328242e-005   0.000000e+000 
+	   energy             1.934288e+002   9.600224e-006   1.934288e+000 
+	   displacement       2.433722e+001   1.044910e-004   2.432220e-005 
+ 3
+ Nonlinear solution status: time= 1
+	stiffness updates             = 2
+	right hand side evaluations   = 4
+	stiffness matrix reformations = 1
+	step from line search         = 1.000000
+	convergence norms :     INITIAL         CURRENT         REQUIRED
+	   residual           3.680382e+004   9.514988e-007   0.000000e+000 
+	   energy             1.934288e+002   1.610604e-009   1.934288e+000 
+	   displacement       2.433722e+001   9.060151e-007   2.432199e-005 
+
+convergence summary
+    number of iterations   : 3
+    number of reformations : 1
+
+
+------- converged at time : 1
+
+
+Data Record #1
+===========================================================================
+Step = 10
+Time = 1
+Data = data
+File = dataFile.txt
+
+Data Record #2
+===========================================================================
+Step = 10
+Time = 1
+Data = data
+File = dataFile.txt
+
+Data Record #3
+===========================================================================
+Step = 10
+Time = 1
+Data = data
+File = dataFile.txt
+
+Data Record #4
+===========================================================================
+Step = 10
+Time = 1
+Data = data
+File = dataFile.txt
+
+Data Record #5
+===========================================================================
+Step = 10
+Time = 1
+Data = data
+File = dataFile.txt
+
+Data Record #6
+===========================================================================
+Step = 10
+Time = 1
+Data = data
+File = dataFile.txt
+
+Data Record #7
+===========================================================================
+Step = 10
+Time = 1
+Data = data
+File = dataFile.txt
+
+Data Record #8
+===========================================================================
+Step = 10
+Time = 1
+Data = data
+File = dataFile.txt
+
+Data Record #9
+===========================================================================
+Step = 10
+Time = 1
+Data = data
+File = dataFile.txt
+
+Data Record #10
+===========================================================================
+Step = 10
+Time = 1
+Data = data
+File = dataFile.txt
+
+Data Record #11
+===========================================================================
+Step = 10
+Time = 1
+Data = data
+File = dataFile.txt
+
+Data Record #12
+===========================================================================
+Step = 10
+Time = 1
+Data = data
+File = dataFile.txt
+
+Data Record #13
+===========================================================================
+Step = 10
+Time = 1
+Data = data
+File = dataFile.txt
+
+Data Record #14
+===========================================================================
+Step = 10
+Time = 1
+Data = data
+File = dataFile.txt
+
+Data Record #15
+===========================================================================
+Step = 10
+Time = 1
+Data = data
+File = dataFile.txt
+
+Data Record #16
+===========================================================================
+Step = 10
+Time = 1
+Data = data
+File = dataFile.txt
+
+Data Record #17
+===========================================================================
+Step = 10
+Time = 1
+Data = data
+File = dataFile.txt
+
+Data Record #18
+===========================================================================
+Step = 10
+Time = 1
+Data = data
+File = dataFile.txt
+
+Data Record #19
+===========================================================================
+Step = 10
+Time = 1
+Data = data
+File = dataFile.txt
+
+Data Record #20
+===========================================================================
+Step = 10
+Time = 1
+Data = data
+File = dataFile.txt
+
+Data Record #21
+===========================================================================
+Step = 10
+Time = 1
+Data = data
+File = dataFile.txt
+
+Data Record #22
+===========================================================================
+Step = 10
+Time = 1
+Data = data
+File = dataFile.txt
+
+Data Record #23
+===========================================================================
+Step = 10
+Time = 1
+Data = data
+File = dataFile.txt
+
+Data Record #24
+===========================================================================
+Step = 10
+Time = 1
+Data = data
+File = dataFile.txt
+
+Data Record #25
+===========================================================================
+Step = 10
+Time = 1
+Data = data
+File = dataFile.txt
+
+Data Record #26
+===========================================================================
+Step = 10
+Time = 1
+Data = data
+File = dataFile.txt
+
+Data Record #27
+===========================================================================
+Step = 10
+Time = 1
+Data = data
+File = dataFile.txt
+
+
+N O N L I N E A R   I T E R A T I O N   I N F O R M A T I O N
+
+	Number of time steps completed .................... : 10
+
+	Total number of equilibrium iterations ............ : 30
+
+	Average number of equilibrium iterations .......... : 3
+
+	Total number of right hand evaluations ............ : 40
+
+	Total number of stiffness reformations ............ : 10
+
+	Time in solver: 0:00:01
+
+
+ Elapsed time : 0:00:03
+
+
+ N O R M A L   T E R M I N A T I O N
+
